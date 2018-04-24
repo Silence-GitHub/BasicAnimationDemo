@@ -10,31 +10,46 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "Animations"
+    }
+    
     // MARK: - Table view data source
     
-    private let titles: [String] = ["Background color", "Position", "Shape path", "Color gradient", "Shape mask"]
-    
-    private var vcs: [UIViewController] {
+    private var vcs: [[String : String]] {
         get {
-            return [BackgroundColorVC(), PositionVC(), ShapePathVC(), ColorGradientVC(), ShapeMaskVC()]
+            return [["title" : "Background color", "vc" : "BackgroundColorVC"],
+                    ["title" : "Position", "vc" : "PositionVC"],
+                    ["title" : "Shape path", "vc" : "ShapePathVC"],
+                    ["title" : "Color gradient", "vc" : "ColorGradientVC"],
+                    ["title" : "Shape mask", "vc" : "ShapeMaskVC"]]
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
+        return vcs.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = titles[indexPath.row]
+        cell.textLabel?.text = vcs[indexPath.row]["title"]
         return cell
     }
     
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(vcs[indexPath.row], animated: true)
+        let clazz = classFrom(vcs[indexPath.row]["vc"]!) as! UIViewController.Type
+        navigationController?.pushViewController(clazz.init(), animated: true)
     }
 
+    func classFrom(_ string: String) -> AnyClass? {
+        if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String {
+            return NSClassFromString("\(name).\(string)")
+        }
+        return NSClassFromString(string)
+    }
 }
 
