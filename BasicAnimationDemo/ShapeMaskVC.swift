@@ -20,7 +20,7 @@ class ShapeMaskVC: UIViewController {
         view.backgroundColor = .white
         
         layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0, y: 64, width: view.bounds.width, height: 200)
+        layer.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: 200)
         layer.colors = [UIColor.red.cgColor, UIColor.clear.cgColor]
         
         UIGraphicsBeginImageContext(layer.bounds.size)
@@ -63,7 +63,7 @@ class ShapeMaskVC: UIViewController {
         animation.toValue = path.cgPath
         animation.duration = 2
         animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = .forwards
         layer.mask?.add(animation, forKey: "")
     }
 

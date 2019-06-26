@@ -20,18 +20,18 @@ class PositionVC: UIViewController {
         view.backgroundColor = .white
         
         layer = CALayer()
-        layer.frame = CGRect(x: 0, y: 64, width: 20, height: 20)
+        layer.frame = CGRect(x: 0, y: 100, width: 20, height: 20)
         layer.backgroundColor = UIColor.blue.cgColor
         view.layer.addSublayer(layer)
     }
     
     @objc private func start() {
         let animation = CABasicAnimation(keyPath: "position")
-        animation.fromValue = CGPoint(x: 10, y: 74)
+        animation.fromValue = CGPoint(x: 10, y: 110)
         animation.toValue = CGPoint(x: 100, y: 200)
         animation.duration = 2
         animation.isRemovedOnCompletion = false // do not remove animation when completed
-        animation.fillMode = kCAFillModeForwards // remain animation final state
+        animation.fillMode = .forwards // remain animation final state
         layer.add(animation, forKey: "")
     }
 

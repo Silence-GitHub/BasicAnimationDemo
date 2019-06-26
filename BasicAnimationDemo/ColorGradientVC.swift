@@ -20,7 +20,7 @@ class ColorGradientVC: UIViewController {
         view.backgroundColor = .white
         
         layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0, y: 64, width: view.bounds.width, height: 300)
+        layer.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: 300)
         layer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor, UIColor.green.cgColor]
         layer.startPoint = CGPoint(x: 0, y: 1)
         layer.endPoint = CGPoint(x: 1, y: 0)
@@ -32,21 +32,21 @@ class ColorGradientVC: UIViewController {
         animation.toValue = [UIColor.orange.cgColor, UIColor.purple.cgColor, UIColor.blue.cgColor]
         animation.duration = 2
         animation.isRemovedOnCompletion = false // do not remove animation when completed
-        animation.fillMode = kCAFillModeForwards // remain animation final state
+        animation.fillMode = .forwards // remain animation final state
         layer.add(animation, forKey: "")
         
         let animation2 = CABasicAnimation(keyPath: "startPoint")
         animation2.toValue = CGPoint(x: 0, y: 0)
         animation2.duration = 2
         animation2.isRemovedOnCompletion = false // do not remove animation when completed
-        animation2.fillMode = kCAFillModeForwards // remain animation final state
+        animation2.fillMode = .forwards // remain animation final state
         layer.add(animation2, forKey: "")
         
         let animation3 = CABasicAnimation(keyPath: "endPoint")
         animation3.toValue = CGPoint(x: 1, y: 1)
         animation3.duration = 2
         animation3.isRemovedOnCompletion = false // do not remove animation when completed
-        animation3.fillMode = kCAFillModeForwards // remain animation final state
+        animation3.fillMode = .forwards // remain animation final state
         layer.add(animation3, forKey: "")
     }
 

@@ -31,7 +31,7 @@ class BackgroundColorVC: UIViewController {
         animation.toValue = UIColor.yellow.cgColor
         animation.duration = 2
         animation.isRemovedOnCompletion = false // do not remove animation when completed
-        animation.fillMode = kCAFillModeForwards // remain animation final state
+        animation.fillMode = .forwards // remain animation final state
         layer.add(animation, forKey: "")
     }
 

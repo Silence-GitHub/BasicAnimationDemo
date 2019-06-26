@@ -20,7 +20,7 @@ class ShapePathVC: UIViewController {
         view.backgroundColor = .white
         
         layer = CAShapeLayer()
-        layer.frame = CGRect(x: 0, y: 64, width: view.bounds.width, height: 300)
+        layer.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: 300)
         layer.backgroundColor = UIColor.yellow.cgColor
         
         UIGraphicsBeginImageContext(layer.bounds.size)
@@ -37,14 +37,14 @@ class ShapePathVC: UIViewController {
     }
     
     @objc private func start() {
-        layer.lineCap = kCALineCapRound
+        layer.lineCap = .round
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
         animation.toValue = 1
         animation.duration = 2
         animation.isRemovedOnCompletion = false // do not remove animation when completed
-        animation.fillMode = kCAFillModeForwards // remain animation final state
+        animation.fillMode = .forwards // remain animation final state
         layer.add(animation, forKey: "")
         
         let animation2 = CABasicAnimation(keyPath: "lineWidth")
@@ -52,7 +52,7 @@ class ShapePathVC: UIViewController {
         animation2.toValue = 10
         animation2.duration = 2
         animation2.isRemovedOnCompletion = false // do not remove animation when completed
-        animation2.fillMode = kCAFillModeForwards // remain animation final state
+        animation2.fillMode = .forwards // remain animation final state
         layer.add(animation2, forKey: "")
         
         let animation3 = CABasicAnimation(keyPath: "strokeColor")
@@ -60,7 +60,7 @@ class ShapePathVC: UIViewController {
         animation3.toValue = UIColor.blue.cgColor
         animation3.duration = 2
         animation3.isRemovedOnCompletion = false // do not remove animation when completed
-        animation3.fillMode = kCAFillModeForwards // remain animation final state
+        animation3.fillMode = .forwards // remain animation final state
         layer.add(animation3, forKey: "")
     }
 
