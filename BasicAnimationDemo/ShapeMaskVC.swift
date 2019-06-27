@@ -23,7 +23,6 @@ class ShapeMaskVC: UIViewController {
         layer.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: 200)
         layer.colors = [UIColor.red.cgColor, UIColor.clear.cgColor]
         
-        UIGraphicsBeginImageContext(layer.bounds.size)
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 10, y: 150))
         path.addLine(to: CGPoint(x: 60, y: 150))
@@ -33,8 +32,6 @@ class ShapeMaskVC: UIViewController {
         path.addLine(to: CGPoint(x: 260, y: 150))
         path.addLine(to: CGPoint(x: 310, y: 150))
         path.close()
-        path.stroke()
-        UIGraphicsEndImageContext()
         
         let mask = CAShapeLayer()
         mask.frame = layer.bounds
@@ -45,7 +42,6 @@ class ShapeMaskVC: UIViewController {
     }
     
     @objc private func start() {
-        UIGraphicsBeginImageContext(layer.bounds.size)
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 10, y: 150))
         path.addLine(to: CGPoint(x: 60, y: 100))
@@ -55,8 +51,6 @@ class ShapeMaskVC: UIViewController {
         path.addLine(to: CGPoint(x: 260, y: 100))
         path.addLine(to: CGPoint(x: 310, y: 150))
         path.close()
-        path.stroke()
-        UIGraphicsEndImageContext()
         
         let animation = CABasicAnimation(keyPath: "path")
         animation.fromValue = (layer.mask as! CAShapeLayer).path

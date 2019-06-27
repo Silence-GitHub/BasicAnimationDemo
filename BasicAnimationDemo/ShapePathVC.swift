@@ -23,14 +23,11 @@ class ShapePathVC: UIViewController {
         layer.frame = CGRect(x: 0, y: 100, width: view.bounds.width, height: 300)
         layer.backgroundColor = UIColor.yellow.cgColor
         
-        UIGraphicsBeginImageContext(layer.bounds.size)
         let path = UIBezierPath()
         layer.strokeColor = UIColor.clear.cgColor
         layer.fillColor = UIColor.clear.cgColor
         path.move(to: CGPoint(x: 10, y: 150))
         path.addCurve(to: CGPoint(x: 300, y: 150), controlPoint1: CGPoint(x: 110, y: 0), controlPoint2: CGPoint(x: 210, y: 300))
-        path.stroke()
-        UIGraphicsEndImageContext()
         
         layer.path = path.cgPath
         view.layer.addSublayer(layer)
